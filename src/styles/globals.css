@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Ejemplo de animación personalizada */
+@keyframes pulse-slow {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.btn-pulse {
+  animation: pulse-slow 2s infinite;
+}
+
+
+/* Acordeón con transición suave */
+details summary {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+details[open] summary {
+  color: #2563eb;
+}
+
+/* Hover en tarjetas */
+.card-hover:hover {
+  @apply shadow-lg scale-[1.02] transition-transform;
+}
+
+/* Espaciado general para secciones */
+section {
+  @apply px-4 sm:px-6 md:px-8;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+
+/* COMPONENTE HERO */
+
+.cross {
+  position: absolute;
+  font-size: 14px;
+  color: rgba(59, 131, 246, 0.521); /* azul clarito */
+  opacity: 0;
+  animation: fadeInOut 5s ease-in-out infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Botón bordado */
