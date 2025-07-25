@@ -75,7 +75,7 @@ export const PinPerspective = ({
             target={"_blank"}
             className="relative flex space-x-2 items-center z-10 rounded-full py-0.5 px-4 ring-1 ring-white/10 "
           >
-            <div className="relative z-10 rounded-full bg-blue-400 py-0.5 px-4 ring-1 ring-white/10 flex items-center space-x-2 m">
+            <div className="relative z-10 rounded bg-blue-400 py-0.5 px-4 ring-1 ring-white/10 flex items-center space-x-2 mt-[-20px]">
                 <span className="text-xs font-bold text-white">{title}</span>
             </div>
 

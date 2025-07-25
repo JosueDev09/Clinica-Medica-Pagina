@@ -1,7 +1,7 @@
 // components/Especialistas.tsx
 export default function Especialistas() {
     return (
-      <section id="especialistas" className="py-20 bg-blue-50">
+      <section id="especialistas" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <h3 className="text-3xl font-semibold text-center mb-10">Conoce a nuestros especialistas</h3>
           <div className="grid md:grid-cols-3 gap-6">

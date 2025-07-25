@@ -8,16 +8,19 @@ import Testimonios from '@/components/testimonios/testimonios';
 import PreguntasFrecuentes from '@/components/preguntasFrecuentes/preguntasFrecuentes';
 import Contacto from '@/components/contacto/contacto';
 import Footer from '@/components/footer/footer';
+import InformacionEmpresa from '@/components/informacionEmpresa/informacionEmpresa';
 
 export default function PublicHomePage() {
   return (
     <>
       <Header />
+     
       <main className="mt-16">
         <Hero />
         <Servicios />
-        <Especialistas />
         
+        <Especialistas />
+         <InformacionEmpresa />
         <Testimonios />
         <PreguntasFrecuentes />
         <Contacto />

@@ -70,4 +70,20 @@ section {
   }
 }
 
-/* Botón bordado */
+/* MENU DE OPCIONES */
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background-color: #3f7fe6; /* Tailwind's blue-500 */
+  transition: width 0.6s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
