@@ -48,8 +48,8 @@ export default function Testimonios() {
   const { texto, autor } = testimonios[actual];
 
   return (
-    <section className="bg-blue-50 py-20">
-      <div className="max-w-4xl mx-auto text-center px-4">
+    <section className="bg-blue-100 py-20 relative">
+      <div className="max-w-4xl mx-auto text-center px-4 mt-[50px]">
         <h3 className="text-3xl font-semibold mb-10">
           Lo que opinan nuestros pacientes
         </h3>
@@ -82,6 +82,11 @@ export default function Testimonios() {
           </button>
         </div> */}
       </div>
+       {/* Difuminado blanco -> azul (parte inferior) */}
+      {/* Difuminado azul -> blanco (parte superior) */}
+        <div className="absolute top-0 left-0 w-full h-60 z-10 pointer-events-none">
+        <div className="w-full h-full bg-gradient-to-b from-blue-100 to-transparent" />
+        </div>
     </section>
   );
 }

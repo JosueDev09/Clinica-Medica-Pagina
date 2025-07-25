@@ -18,7 +18,6 @@ export default function PublicHomePage() {
       <main className="mt-16">
         <Hero />
         <Servicios />
-        
         <Especialistas />
          <InformacionEmpresa />
         <Testimonios />

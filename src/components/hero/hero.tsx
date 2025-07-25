@@ -98,6 +98,12 @@ const frasesSubtitulo = [
           </Button>
         </div>
       </div>
+           {/* Difuminado blanco -> azul (parte inferior) */}
+        <div className="absolute bottom-0 left-0 w-full h-60 z-10 pointer-events-none">
+        <div className="w-full h-full bg-gradient-to-t from-blue-100 to-transparent" />
+        </div>
+     
+      
     </section>
   );
 }

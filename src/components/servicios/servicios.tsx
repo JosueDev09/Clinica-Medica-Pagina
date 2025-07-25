@@ -8,7 +8,7 @@ export default function Servicios() {
     ];
   
     return (
- <section id="servicios" className="py-20 bg-blue-100">
+ <section id="servicios" className="py-20 bg-blue-100 relative h-[70vh]">
   <div className="max-w-6xl mx-auto px-4">
     <h3 className="text-3xl font-semibold mb-10 text-center">Nuestros servicios</h3>
     <div className="grid md:grid-cols-3 gap-8">
@@ -30,7 +30,14 @@ export default function Servicios() {
         </div>
       ))}
     </div>
+    {/* Difuminado blanco -> azul (parte inferior) */}
+    <div className="absolute bottom-0 left-0 w-full h-60 z-10 pointer-events-none">
+      <div className="w-full h-full bg-gradient-to-t from-blue-100 to-transparent" />
+    </div>
+    
   </div>
+  
+  
 </section>
 
 
