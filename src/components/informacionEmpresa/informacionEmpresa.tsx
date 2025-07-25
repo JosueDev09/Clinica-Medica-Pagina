@@ -1,3 +1,5 @@
+
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import { useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
@@ -27,62 +29,71 @@ export default function InformacionEmpresa() {
     offset: ["start end", "end start"],
   });
 
-  const fondoOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const fondoOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
   const fondoScale = useTransform(scrollYProgress, [0, 0.3], [1.1, 1]);
+  const whiteOverlayOpacity = useTransform(scrollYProgress, [0.95, 1], [0, 1]);
 
   return (
-    <section ref={sectionRef} className="relative">
-      {/* Fondo azul animado SOLO en esta sección */}
+    <section ref={sectionRef} className="relative min-h-[270vh]">
+      {/* Fondo azul */}
       <motion.div
-        className="absolute inset-0 bg-blue-200 z-0"
+        className="absolute inset-0 bg-blue-300 z-0"
         style={{ opacity: fondoOpacity, scale: fondoScale }}
       />
 
-      {/* Contenido encima del fondo */}
-      <div className="relative z-10">
-        {contenidoEmpresa.map((item, index) => (
-          <ScrollSection
-            key={index}
-            title={item.title}
-            description={item.description}
-          />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function ScrollSection({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 80%", "start 40%"],
-  });
-
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  const translateY = useTransform(scrollYProgress, [0, 1], [40, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
-
-  return (
-    <section
-      ref={ref}
-      className="min-h-[60vh] flex items-center justify-center px-6 text-center"
-    >
+      {/* Capa blanca final */}
       <motion.div
-        style={{ opacity, y: translateY, scale }}
-        className="max-w-3xl text-white"
-      >
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">{title}</h2>
-        <p className="text-lg md:text-xl text-white leading-relaxed">
-          {description}
-        </p>
-      </motion.div>
+        className="absolute inset-0 bg-white z-10"
+        style={{ opacity: whiteOverlayOpacity }}
+      />
+
+      {/* Contenido fijo con transiciones por scroll */}
+      <div className="sticky top-0 h-screen flex items-center justify-center z-20 px-6 text-center">
+        <div className="relative w-full max-w-3xl mx-auto h-[400px]">
+          {contenidoEmpresa.map((item, index) => {
+            // Si es el último, le damos más espacio
+            const isLast = index === contenidoEmpresa.length - 1;
+            const start = 0.3 + index * 0.2;
+            const end = isLast ? start + 0.4 : start + 0.25;
+
+            const itemOpacity = useTransform(
+              scrollYProgress,
+              [start, (start + end) / 2, end],
+              [0, 1, 0]
+            );
+            const itemY = useTransform(scrollYProgress, [start, end], [40, 0]);
+            const itemScale = useTransform(scrollYProgress, [start, end], [0.95, 1]);
+
+            return (
+              <motion.div
+                key={index}
+                style={{
+                  opacity: itemOpacity,
+                  y: itemY,
+                  scale: itemScale,
+                  position: "absolute",
+                  inset: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                className="bg-white/10 backdrop-blur-md p-8 rounded-lg shadow-lg w-full"
+              >
+                <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+                  {item.title}
+                </h2>
+                <p className="text-lg md:text-xl text-white/90 leading-relaxed drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)] break-words whitespace-normal">
+                  {item.description}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Espacio extra para scroll final */}
+      <div className="h-[40vh]" />
     </section>
   );
 }

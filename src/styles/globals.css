@@ -87,3 +87,8 @@ section {
   width: 100%;
 }
 
+
+.text-glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
