@@ -1,4 +1,5 @@
 // src/app/public/page.tsx
+"use client";
 import Header from '@/components/header/header';
 import Hero from '@/components/hero/hero';
 import Servicios from '@/components/servicios/servicios';
