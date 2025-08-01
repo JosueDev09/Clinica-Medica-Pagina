@@ -3,7 +3,7 @@
 import Header from '@/components/header/header';
 import Hero from '@/components/hero/hero';
 import Servicios from '@/components/servicios/servicios';
-import Especialistas from '@/components/especialistas/especialistas';
+import Especialidades from '@/components/especialidades/especialidades';
 // import CitasCTA from '@/components/CitasCTA';
 import Testimonios from '@/components/testimonios/testimonios';
 import PreguntasFrecuentes from '@/components/preguntasFrecuentes/preguntasFrecuentes';
@@ -19,7 +19,7 @@ export default function PublicHomePage() {
       <main className="mt-16">
         <Hero />
         <Servicios />
-        <Especialistas />
+        <Especialidades />
          <InformacionEmpresa />
         <Testimonios />
         <PreguntasFrecuentes />

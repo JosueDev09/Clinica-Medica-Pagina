@@ -1,35 +1,48 @@
-"use client";
-import { cn } from "@/lib/utils";
+import React from "react";
 
 interface CardDemoProps {
   title: string;
-  icon?: string;
+  imageUrl: string;
+  hoverImageUrl?: string;
 }
 
-export function CardDemo({ title, icon }: CardDemoProps) {
+const CardDemo: React.FC<CardDemoProps> = ({
+  title,
+  imageUrl,
+  //hoverImageUrl = "https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif",
+}) => {
   return (
-    <div className="max-w-xs w-full">
+    <div className="relative h-96 rounded-xl overflow-hidden shadow-xl group">
+      {/* Imagen principal de fondo */}
       <div
-        className={cn(
-          "group w-full cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl mx-auto flex flex-col justify-end p-4 border border-transparent dark:border-neutral-800",
-          "bg-[url(https://images.unsplash.com/photo-1476842634003-7dcca8f832de?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)] bg-cover",
-          // Preload hover image by setting it in a pseudo-element
-          "before:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)] before:fixed before:inset-0 before:opacity-0 before:z-[-1]",
-          "hover:bg-[url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExNWlodTF3MjJ3NnJiY3Rlc2J0ZmE0c28yeWoxc3gxY2VtZzA5ejF1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/syEfLvksYQnmM/giphy.gif)]",
-          "hover:after:content-[''] hover:after:absolute hover:after:inset-0 hover:after:bg-black hover:after:opacity-50",
-          "transition-all duration-500"
-        )}
-      >
-        <div className="text relative z-50">
-          <h1 className="font-bold text-xl md:text-3xl text-gray-50 relative">
-           { icon && <span className="text-2xl mr-2">{icon}</span> }
-           {title}
-          </h1>
-          <p className="font-normal text-base text-gray-50 relative my-4">
-        
-          </p>
-        </div>
+        className="absolute inset-0 bg-cover bg-center transition-opacity duration-500 z-0"
+        style={{ backgroundImage: `url(${imageUrl})` }}
+      />
+
+      {/* Imagen animada al hacer hover */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"
+        style={{
+         /// backgroundImage: `url(${hoverImageUrl})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+
+      {/* Overlay glass oscuro al hover */}
+      <div className="absolute inset-0 z-20 bg-black/30 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+      {/* Contenido */}
+      <div className="relative z-30 h-full flex items-end p-6 text-white">
+        <h3 className="text-2xl font-semibold drop-shadow-lg">{title}</h3>
+       <div className="relative bottom-5/12 right-28 z-30 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <button className="px-5 py-2 bg-blue-600 text-white font-semibold rounded-lg animate-heartbeat hover:bg-blue-800 transition-all duration-300 shadow-lg">
+          Agendar cita
+        </button>
+      </div>
       </div>
     </div>
   );
-}
+};
+
+export default CardDemo;
