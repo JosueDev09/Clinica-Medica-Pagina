@@ -1,22 +1,20 @@
 // components/Especialidades.tsx
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/autoplay";
+
 import { ColourfulText } from "../ui/colourful-text/colourful-text";
 
-export default function Especialidades() {
-  const especialidades = [
-    { nombre: "Cardiología", descripcion: "Cuidado del corazón y sistema circulatorio." },
-    { nombre: "Pediatría", descripcion: "Atención integral a niños y adolescentes." },
-    { nombre: "Dermatología", descripcion: "Salud de la piel, cabello y uñas." },
-    { nombre: "Ginecología", descripcion: "Salud femenina y planificación familiar." },
-    { nombre: "Neurología", descripcion: "Diagnóstico de enfermedades neurológicas." },
-    { nombre: "Medicina Interna", descripcion: "Tratamiento integral de adultos." },
-  ];
+const especialidades = [
+  { nombre: "Cardiología", descripcion: "Cuidado del corazón y sistema circulatorio." },
+  { nombre: "Pediatría", descripcion: "Atención integral a niños y adolescentes." },
+  { nombre: "Dermatología", descripcion: "Salud de la piel, cabello y uñas." },
+  { nombre: "Ginecología", descripcion: "Salud femenina y planificación familiar." },
+  { nombre: "Neurología", descripcion: "Diagnóstico de enfermedades neurológicas." },
+  { nombre: "Medicina Interna", descripcion: "Tratamiento integral de adultos." },
+];
 
+export default function Especialidades() {
+const duplicado = [...especialidades, ...especialidades]; 
   return (
     <section id="especialidades" className="relative h-[45rem] py-20 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 ">
@@ -26,27 +24,22 @@ export default function Especialidades() {
           </div>
         </h1>
 
-     <Swiper
-        modules={[Autoplay]}
-        loop={true}
-        grabCursor={true}
-        slidesPerView={"auto"}
-        speed={6000} // velocidad más alta para movimiento continuo
-        autoplay={{
-          delay: 0,
-          disableOnInteraction: false,
-        }}
-      >
-        {especialidades.map((item, i) => (
-          <SwiperSlide key={i} className="w-[200px]">
-            <div className="bg-white p-6 rounded-xl shadow-lg text-center max-w-sm mx-auto border border-blue-100 hover:shadow-xl transition">
-              <div className="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-blue-200 to-blue-400 rounded-full shadow-md" />
-              <h4 className="font-bold text-xl text-blue-900">{item.nombre}</h4>
-              <p className="text-gray-600 text-sm mt-2">{item.descripcion}</p>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+     
+       <div className="overflow-hidden w-[80%] m-auto relative py-10">
+          <div className="marquee-track flex animate-marquee">
+            {duplicado.map((item, i) => (
+              <div
+                key={i}
+                className="w-[300px] flex-shrink-0 bg-white p-6 rounded-xl shadow-md text-center border border-blue-100 mx-2"
+              >
+                <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-blue-200 to-blue-400 rounded-full shadow-md" />
+                <h4 className="font-bold text-xl text-blue-900">{item.nombre}</h4>
+                <p className="text-gray-600 text-sm mt-2">{item.descripcion}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        
       </div>
 
       {/* Gradientes decorativos */}

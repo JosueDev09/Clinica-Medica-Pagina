@@ -36,7 +36,7 @@ const CardDemo: React.FC<CardDemoProps> = ({
       <div className="relative z-30 h-full flex items-end p-6 text-white">
         <h3 className="text-2xl font-semibold drop-shadow-lg">{title}</h3>
        <div className="relative bottom-5/12 right-28 z-30 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <button className="px-5 py-2 bg-blue-600 text-white font-semibold rounded-lg animate-heartbeat hover:bg-blue-800 transition-all duration-300 shadow-lg">
+        <button className="px-5 py-2 bg-blue-600 text-white font-semibold rounded-lg animate-heartbeat hover:bg-blue-800 transition-all duration-300 shadow-lg cursor-pointer">
           Agendar cita
         </button>
       </div>

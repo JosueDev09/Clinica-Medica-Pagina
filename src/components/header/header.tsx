@@ -9,12 +9,8 @@ const Menu = [
     href: "#servicios",
   },
   {
-    title: "Especialistas",
-    href: "#especialistas",
-  },
-  {
-    title: "Agendar",
-    href: "/public/agendar",
+    title: "Especialidades",
+    href: "#especialidades",
   },
   {
     title: "Contacto",
@@ -26,8 +22,7 @@ const Menu = [
 export default function Header() {
     return (
       
-      
-     <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-white/30 border-b border-white/20 shadow-md overflow-x-hidden">
+     <header className="fixed top-3  xl:left-[25%]  xl:w-[50%] z-50 backdrop-blur-md bg-white/30 border-b border-white/20 shadow-md overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center overflow-x-hidden">
         <h1 className="font-bold text-lg text-blue-700 whitespace-nowrap">
           Clínica Esymbel
