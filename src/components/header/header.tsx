@@ -1,25 +1,10 @@
+import useMenu from "@/hooks/menu/menu";
 
-const Menu = [
-  {
-    title: "Inicio",
-    href: "/inicio",
-  },
-  {
-    title: "Servicios",
-    href: "#servicios",
-  },
-  {
-    title: "Especialidades",
-    href: "#especialidades",
-  },
-  {
-    title: "Contacto",
-    href: "#contacto",
-  },
-]
+
 
 
 export default function Header() {
+  const Menu = useMenu();
     return (
       
      <header className="fixed top-3  xl:left-[25%]  xl:w-[50%] z-50 backdrop-blur-md bg-white/30 border-b border-white/20 shadow-md overflow-x-hidden">

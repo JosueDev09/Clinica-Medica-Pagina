@@ -5,9 +5,12 @@
   max-width: 100vw;
 }
 
+
+
 body {
   font-family: 'Inter', sans-serif;
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 /* Ejemplo de animación personalizada */
@@ -132,6 +135,30 @@ section {
 .marquee-track {
   animation: marquee 40s linear infinite;
 }
+
+[data-scroll] {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.9s ease-out;
+}
+[data-scroll].is-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.input {
+  padding: 0.5rem 1rem;           /* px-4 py-2 */
+  border: 1px solid #d1d5db;      /* border-gray-300 */
+  border-radius: 0.5rem;          /* rounded-lg */
+  outline: none;                  /* focus:outline-none */
+  width: 100%;                    /* w-full */
+}
+
+.input:focus {
+  border-color: #3b82f6;          /* focus:ring-blue-500 fallback */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* simulate focus:ring-2 */
+}
+
 
 
 

@@ -1,11 +1,9 @@
-
-/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import CrucesAnimadas from "../ui/cruces/cruces";
 import  {ColourfulText}  from "../ui/colourful-text/colourful-text";
-import { WobbleCard } from "../ui/wobble-card/wobble-card";
 import { TextGenerateEffect } from "../ui/text-generate-effect/text-generate-effect";
 import { ColourfulTextCopy } from "../ui/colourful-text-copy/colourful-text-copy";
 
@@ -53,11 +51,12 @@ export default function InformacionEmpresa() {
       </h1>
       
    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
-  {contenidoEmpresa.map((item, index) => (
-    <div
-      key={index}
-      className="relative group overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
-    >
+    {contenidoEmpresa.map((item, index) => (
+      <div
+        key={index}
+        className="relative group overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
+      >
+      
       {/* Imagen siempre visible */}
       <img
         src={item.image}
@@ -65,13 +64,21 @@ export default function InformacionEmpresa() {
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
 
+      {/* Título inicial visible - se oculta al hacer hover */}
+      <div className="absolute top-[80%] left-1/6 transform -translate-x-1/2 z-20 px-6 py-3 transition-opacity duration-500 group-hover:opacity-0 bg-blue/50 backdrop-blur-md rounded-xl shadow-md border border-white/20">
+        <h3 className="text-xl md:text-2xl font-bold text-center text-white drop-shadow-lg">
+          <ColourfulTextCopy text={item.title} />
+        </h3>
+      </div>
+
       {/* Overlay con efecto glass */}
       <div className="absolute inset-0 bg-blue/30 backdrop-blur-md backdrop-brightness-75 text-white opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center items-center text-center p-6">
-        <h3 className="text-2xl md:text-3xl font-bold tracking-wide mb-3 animate-text-generate">
-          
-           <ColourfulTextCopy text={item.title} />
+       <div className="absolute top-[30%] left-1/4 transform -translate-x-1/2 z-20 bg-white/30 px-6 py-3 backdrop-blur-md rounded-xl shadow-md border border-white/20">
+        <h3 className="text-xl md:text-2xl font-bold text-center text-white drop-shadow-lg">
+          <ColourfulTextCopy text={item.title} />
         </h3>
-        
+      </div>
+      
         {/*  */}
          <TextGenerateEffect words={item.description} />
       </div>

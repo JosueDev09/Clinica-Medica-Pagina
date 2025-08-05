@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import { useState, useEffect } from "react";
 import CrucesAnimadas from "../ui/cruces/cruces";
 import { Button } from "../ui/borderHover/borderHover";
+import { useRouter } from "next/navigation";
 
 
 
@@ -24,7 +26,7 @@ const frasesSubtitulo = [
   "con profesionales certificados.",
   "con tecnología avanzada.",
 ]
-
+   const router = useRouter();
  const [indice, setIndice] = useState(0);
   const [textoVisible, setTextoVisible] = useState("");
   const [modo, setModo] = useState<"escribiendo" | "esperando" | "borrando">("escribiendo");
@@ -92,7 +94,8 @@ const frasesSubtitulo = [
         <div className="mt-[40px] flex justify-center text-center">
             <Button
             borderRadius="1.1rem"
-            className="bg-white dark:bg-blue-500 text-black dark:text-white border-neutral-200 dark:border-slate-800 cursor-pointer "
+            className="bg-white dark:bg-blue-500 text-black dark:text-white border-neutral-200 dark:border-slate-800 cursor-pointer"
+            onClick={() => router.push("/agendarCita")}
           >
             AGENDAR CITA
           </Button>

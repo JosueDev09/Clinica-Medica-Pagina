@@ -81,9 +81,9 @@ export default function Testimonios() {
           alt={item.title}
           className="h-80 w-full object-cover rounded-t-xl"
         />
-        <div className="bg-neutral-900 p-4 rounded-b-xl text-white text-center">
+        <div className="bg-blue-300 p-4 rounded-b-xl text-white text-center">
           <h3 className="text-xl font-bold">{item.title}</h3>
-          <p className="text-sm text-neutral-400 mt-1">{item.texto}</p>
+          <p className="text-sm text-black mt-1">{item.texto}</p>
         </div>
       </DraggableCardBody>
       ))}
