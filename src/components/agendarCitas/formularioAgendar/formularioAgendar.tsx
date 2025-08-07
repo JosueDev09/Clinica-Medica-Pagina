@@ -1,15 +1,15 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Input } from "../../ui/input/input";
 import { Label } from "../../ui/label/label";
 import { Textarea } from "../../ui/textarea/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../ui/select/select";
 import { Button } from "../../ui/button/button";
 import { User, Calendar, CreditCard, CheckCircle } from "lucide-react";
 import Swal from "sweetalert2";
-import CrucesAnimadas from "@/components/ui/cruces/cruces";
+
+import { useRouter } from "next/navigation";
 
 const pasos = [
   { id: "datos", title: "Datos del Paciente", icon: <User /> },
@@ -20,6 +20,7 @@ const pasos = [
 export default function FormularioCita() {
   const [pasoActual, setPasoActual] = useState(0);
   const [completado, setCompletado] = useState<boolean[]>(Array(pasos.length).fill(false));
+  const router = useRouter();
   const [form, setForm] = useState({
     nombre: "",
     correo: "",
@@ -44,6 +45,9 @@ export default function FormularioCita() {
         text: "Recibirás un correo con los detalles.",
         confirmButtonColor: "#10B981",
       });
+       setTimeout(() => {
+        router.push("/confirmacionPago");
+    }, 2000);
     } else {
       setPasoActual((prev) => prev + 1);
     }

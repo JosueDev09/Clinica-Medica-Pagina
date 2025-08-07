@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+
 'use client';
 
 import { ScrollProvider } from '@/components/ui/scrollProvider/ScrollProvider';
