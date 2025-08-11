@@ -26,6 +26,7 @@ export default function FormularioCita() {
     correo: "",
     telefono: "",
     especialidad: "",
+    doctor: "",
     fecha: "",
     hora: "",
     motivo: "",
@@ -216,6 +217,22 @@ export default function FormularioCita() {
                     <option value="dermatologia">Dermatología</option>
                 </select>
                 </div>
+                 <div>
+                <Label className="mb-[20px]">Doctor</Label>
+                <select
+                    value={form.doctor}
+                    onChange={(e) => setForm({ ...form, doctor: e.target.value })}
+                    className="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    <option value="">Selecciona un doctor</option>
+                    <option value="doctor1">Dr. Juan Pérez</option>
+                    <option value="doctor2">Dra. María López</option>
+                    <option value="doctor3">Dr. Carlos Sánchez</option>
+                    <option value="doctor4">Dra. Ana Torres</option>
+                    <option value="doctor5">Dr. Luis Gómez</option>
+                </select>
+                </div>
+
 
                 <div>
                 <Label className="mb-[20px]">Fecha deseada</Label>
