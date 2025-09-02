@@ -1,5 +1,5 @@
 // src/app/public/page.tsx
-"use client";
+
 import Header from '@/components/header/header';
 import Hero from '@/components/hero/hero';
 import Servicios from '@/components/servicios/servicios';
@@ -11,12 +11,15 @@ import Contacto from '@/components/contacto/contacto';
 import Footer from '@/components/footer/footer';
 import InformacionEmpresa from '@/components/informacionEmpresa/informacionEmpresa';
 
+import { ScrollProvider } from '@/components/ui/scrollProvider/ScrollProvider';
+import 'locomotive-scroll/dist/locomotive-scroll.css';
+
 export default function PublicHomePage() {
   return (
     <>
       <Header />
-     
-      <main className="mt-16">
+      <ScrollProvider>
+      <main >
         <Hero />
         <Servicios />
         <Especialidades />
@@ -25,7 +28,8 @@ export default function PublicHomePage() {
         <PreguntasFrecuentes />
         <Contacto />
       </main>
-      <Footer />
+      </ScrollProvider>
+     
     </>
   );
 }

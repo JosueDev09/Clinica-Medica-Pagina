@@ -33,6 +33,15 @@ export default function GraciasPorAgendar() {
           Hemos recibido tu solicitud. Te enviaremos un correo de confirmación con los detalles de tu cita médica.
         </p>
 
+        <button 
+          onClick={() => router.push("/inicio")}
+          className="mt-8 bg-white text-blue-950 font-semibold px-6 py-3 rounded-lg hover:bg-blue-100 transition cursor-pointer"
+          data-scroll
+          data-scroll-speed="1.5"
+        >
+         Regresar al inicio. 
+        </button>
+
         <VitalLines />
 
         
