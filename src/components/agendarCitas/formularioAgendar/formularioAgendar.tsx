@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 "use client";
 import { useState } from "react";
@@ -6,8 +7,9 @@ import { Input } from "../../ui/input/input";
 import { Label } from "../../ui/label/label";
 import { Textarea } from "../../ui/textarea/textarea";
 import { Button } from "../../ui/button/button";
-import { User, Calendar, CreditCard, CheckCircle } from "lucide-react";
+import { User, Calendar, CreditCard, CheckCircle, Wallet,Banknote } from "lucide-react";
 import Swal from "sweetalert2";
+import CountUp from "react-countup";
 
 import { useRouter } from "next/navigation";
 
@@ -18,6 +20,7 @@ const pasos = [
 ];
 
 export default function FormularioCita() {
+  const [precioConsulta] = useState(600); // o dinámico si lo necesitas
   const [pasoActual, setPasoActual] = useState(0);
   const [completado, setCompletado] = useState<boolean[]>(Array(pasos.length).fill(false));
   const router = useRouter();
@@ -266,40 +269,61 @@ export default function FormularioCita() {
 
             {/* PASO 3 - PAGO */}
        {pasoActual === 2 && (
-  <div className="grid grid-cols-1 gap-6">
-    <div>
-      <h3 className="text-lg font-semibold mb-2">Selecciona un método de pago:</h3>
-      <div className="space-y-4">
-        <label className="flex items-center gap-2">
-          <input
-            type="radio"
-            name="pago"
-            value="paypal"
-            onChange={(e) => setForm({ ...form, metodoPago: e.target.value })}
-          />
-          PayPal
-        </label>
-        <label className="flex items-center gap-2">
-          <input
-            type="radio"
-            name="pago"
-            value="tarjeta"
-            onChange={(e) => setForm({ ...form, metodoPago: e.target.value })}
-          />
-          Tarjeta de crédito o débito
-        </label>
-        <label className="flex items-center gap-2">
-          <input
-            type="radio"
-            name="pago"
-            value="efectivo"
-            onChange={(e) => setForm({ ...form, metodoPago: e.target.value })}
-          />
-          Pago en efectivo en clínica
-        </label>
-      </div>
-    </div>
-  </div>
+   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+   {/* MÉTODO DE PAGO CON BOTONES */}
+   <div className="space-y-6" >
+     <h3 className="text-xl font-semibold mb-4 text-gray-800">
+       Selecciona un método de pago:
+     </h3>
+ 
+     <div className="flex flex-col gap-4">
+       <button
+         type="button"
+         onClick={() => setForm({ ...form, metodoPago: "paypal" })}
+         className={`flex items-center gap-4 px-5 py-3 rounded-lg border transition cursor-pointer
+           ${form.metodoPago === "paypal" ? "bg-blue-100 border-blue-500" : "bg-white border-gray-300 hover:border-blue-400"}`}
+       >
+         <CreditCard className="w-6 h-6 text-blue-600" />
+         <span className="text-gray-800 font-medium">PayPal</span>
+       </button>
+ 
+       <button
+         type="button"
+         onClick={() => setForm({ ...form, metodoPago: "tarjeta" })}
+         className={`flex items-center gap-4 px-5 py-3 rounded-lg border transition cursor-pointer
+           ${form.metodoPago === "tarjeta" ? "bg-blue-100 border-blue-500" : "bg-white border-gray-300 hover:border-blue-400"}`}
+       >
+         <CreditCard className="w-6 h-6 text-indigo-600" />
+         <span className="text-gray-800 font-medium">Tarjeta de crédito o débito</span>
+       </button>
+ 
+       <button
+         type="button"
+         onClick={() => setForm({ ...form, metodoPago: "efectivo" })}
+         className={`flex items-center gap-4 px-5 py-3 rounded-lg border transition cursor-pointer
+           ${form.metodoPago === "efectivo" ? "bg-blue-100 border-blue-500" : "bg-white border-gray-300 hover:border-blue-400"}`}
+       >
+         <Banknote className="w-6 h-6 text-green-600" />
+         <span className="text-gray-800 font-medium">Pago en efectivo en clínica</span>
+       </button>
+     </div>
+   </div>
+ 
+   {/* PRECIO CON COUNTUP */}
+   <div
+     className="flex flex-col justify-center items-center bg-white rounded-xl shadow-lg px-6 py-12 text-center "
+   >
+     <h4 className="text-lg font-semibold text-gray-700 mb-3 ">
+       Precio de la consulta
+     </h4>
+     <div className="text-6xl font-extrabold text-green-600">
+       <CountUp start={0} end={precioConsulta} duration={2.5} prefix="$" suffix=" MXN" />
+     </div>
+     <p className="mt-4 text-sm text-gray-500">
+       Este monto se muestra antes de confirmar tu cita.
+     </p>
+   </div>
+ </div>
 )}
 
 
@@ -319,7 +343,7 @@ export default function FormularioCita() {
             Atrás
             </Button>
         )}
-        <Button onClick={siguientePaso} type="button" className="mb-9">
+        <Button onClick={siguientePaso} type="button" className="mb-9 cursor-pointer">
             {pasoActual === pasos.length - 1 ? "Confirmar cita" : "Siguiente"}
         </Button>
         </div>
