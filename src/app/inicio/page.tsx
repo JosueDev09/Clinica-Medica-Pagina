@@ -13,6 +13,7 @@ import InformacionEmpresa from '@/components/informacionEmpresa/informacionEmpre
 
 import { ScrollProvider } from '@/components/ui/scrollProvider/ScrollProvider';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
+import Galeria from '@/components/galeria/galeria';
 
 export default function PublicHomePage() {
   return (
@@ -24,7 +25,7 @@ export default function PublicHomePage() {
         <Servicios />
         <Especialidades />
          <InformacionEmpresa />
-        <Testimonios />
+        <Galeria />
         <PreguntasFrecuentes />
         <Contacto />
       </main>
