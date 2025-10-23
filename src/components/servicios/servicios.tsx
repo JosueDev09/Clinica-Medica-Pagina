@@ -16,7 +16,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-const ColourfulText = ({ text }) => {
+const ColourfulText = ({ text } : { text: string; }) => {
   return (
     <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-clip-text text-transparent font-bold">
       {text}
@@ -24,7 +24,7 @@ const ColourfulText = ({ text }) => {
   );
 };
 
-const FloatingCross = ({ delay, duration, left, top, size, opacity }) => {
+const FloatingCross = ({ delay, duration, left, top, size, opacity } : { delay: number; duration: number; left: number; top: number; size: number; opacity: number; }) => {
   return (
     <div
       className="absolute text-blue-200 pointer-events-none animate-float"
@@ -42,7 +42,7 @@ const FloatingCross = ({ delay, duration, left, top, size, opacity }) => {
   );
 };
 
-const ServicioCard = ({ icon: Icon, titulo, descripcion, caracteristicas, index }) => {
+const ServicioCard = ({ icon: Icon, titulo, descripcion, caracteristicas, index } : { icon: React.ElementType; titulo: string; descripcion: string; caracteristicas: string[]; index: number; }) => {
   const [mostrarDetalles, setMostrarDetalles] = useState(false);
 
   return (
@@ -80,7 +80,7 @@ const ServicioCard = ({ icon: Icon, titulo, descripcion, caracteristicas, index 
         }`}
       >
         <ul className="space-y-2 pt-4 border-t border-gray-200">
-          {caracteristicas.map((caracteristica, idx) => (
+          {caracteristicas.map((caracteristica: string, idx: number) => (
             <li key={idx} className="flex items-start gap-2 text-gray-700">
               <CheckCircle size={18} className="flex-shrink-0 mt-0.5 text-green-500" />
               <span>{caracteristica}</span>
@@ -92,7 +92,7 @@ const ServicioCard = ({ icon: Icon, titulo, descripcion, caracteristicas, index 
   );
 };
 
-const VentajaCard = ({ icon: Icon, titulo, descripcion }) => {
+const VentajaCard = ({ icon: Icon, titulo, descripcion }: { icon: React.ElementType; titulo: string; descripcion: string; }) => {
   return (
     <div className="backdrop-blur-xl bg-white/40 border border-white/40 rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
       <div className="flex items-center gap-3 mb-3">
