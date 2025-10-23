@@ -10,7 +10,6 @@ import PreguntasFrecuentes from '@/components/preguntasFrecuentes/preguntasFrecu
 import Contacto from '@/components/contacto/contacto';
 import Footer from '@/components/footer/footer';
 import InformacionEmpresa from '@/components/informacionEmpresa/informacionEmpresa';
-
 import { ScrollProvider } from '@/components/ui/scrollProvider/ScrollProvider';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
 import Galeria from '@/components/galeria/galeria';
@@ -28,8 +27,10 @@ export default function PublicHomePage() {
         <Galeria />
         <PreguntasFrecuentes />
         <Contacto />
+        <Footer />
       </main>
       </ScrollProvider>
+      
      
     </>
   );

@@ -34,7 +34,8 @@ const FAQItem = ({ pregunta, respuesta, index }: { pregunta: string; respuesta: 
 
   return (
     <div
-      className="group backdrop-blur-xl bg-white/50 border border-white/50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+      className="group w-[65%] m-auto backdrop-blur-xl bg-white/50 border border-white/50 
+      rounded-2xl shadow-lg mb-4 hover:shadow-xl transition-all duration-300 overflow-hidden"
       style={{ animationDelay: `${index * 100}ms` }}
     >
       <button
