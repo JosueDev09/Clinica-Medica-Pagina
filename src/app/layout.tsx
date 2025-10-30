@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import 'locomotive-scroll/dist/locomotive-scroll.css';
+
 
 
 
