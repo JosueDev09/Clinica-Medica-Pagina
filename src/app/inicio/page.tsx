@@ -5,7 +5,6 @@ import Hero from '@/components/hero/hero';
 import Servicios from '@/components/servicios/servicios';
 import Especialidades from '@/components/especialidades/especialidades';
 // import CitasCTA from '@/components/CitasCTA';
-import Testimonios from '@/components/testimonios/testimonios';
 import PreguntasFrecuentes from '@/components/preguntasFrecuentes/preguntasFrecuentes';
 import Contacto from '@/components/contacto/contacto';
 import Footer from '@/components/footer/footer';
